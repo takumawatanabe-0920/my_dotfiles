@@ -8,17 +8,17 @@
   {
     "key": "space d",
     "command": "editor.action.goToDeclaration",
-    "when": "neovim.mode == normal && editorTextFocus",
+    "when": "neovim.mode == normal && editorTextFocus"
   },
   {
     "key": "space b",
     "command": "workbench.action.navigateBack",
-    "when": "neovim.mode == normal && editorTextFocus",
+    "when": "neovim.mode == normal && editorTextFocus"
   },
   {
     "key": "space h",
     "command": "editor.action.showHover",
-    "when": "neovim.mode == normal && editorTextFocus",
+    "when": "neovim.mode == normal && editorTextFocus"
   },
   // {
   //   "key": "space s",
@@ -317,4 +317,44 @@
     "command": "file-browser.stepIn",
     "when": "inFileBrowser"
   },
+  {
+    "key": "tab",
+    "command": "extension.vim_tab",
+    "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'"
+  },
+  {
+    "key": "tab",
+    "command": "-extension.vim_tab",
+    "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "g",
+    "command": "-magit.refresh",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "g",
+    "command": "vspacecode.showMagitRefreshMenu",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "acceptSelectedCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "cmd+alt+k",
+    "command": "claude-vscode.insertAtMention",
+    "when": "editorTextFocus && editorHasSelection"
+  }
 ]

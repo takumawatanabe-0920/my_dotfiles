@@ -1,18 +1,26 @@
 {
   "workbench.sideBar.location": "left",
   "editor.tabSize": 2,
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "none",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.format.enable": false,
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": true,
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.fixAll.eslint"
+    // "source.organizeImports"
+  ],
   "prettier.semi": false,
+  "prettier.arrowParens": "always",
   "editor.formatOnSave": true,
-  // vscodeの設定で使われるjsonファイル用
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // 一般的なjsonファイル用
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -22,24 +30,17 @@
   "editor.snippetSuggestions": "top",
   "search.exclude": {
     "**/.git": true,
-    "**/node_modules": true
-  },
-  // ファイル保存時にeslintのエラーを自動で直す
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "**/node_modules": true,
+    "**/target": true,
+    "**/bower_components": true,
+    "**/storage": true,
+    "**/tests": true,
+    "_ide_helper.php": true,
+    "_ide_helper_models.php": true,
+    "package-lock.json": true
   },
   "gitlens.defaultDateLocale": null,
-  "eslint.rules.customizations": [
-    {
-      "require-await": "off",
-      "@typescript-eslint/require-await": "warn"
-    }
-  ],
   "eslint.nodePath": "C:\\path\\to\\global\\node_modules",
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/takuma.watanabe/.config/nvim/init.vim",
-  "vscode-neovim.neovimInitVimPaths.linux": "/Users/takuma.watanabe/.config/nvim/init.vim",
   "whichkey.sortOrder": "alphabetically",
   "whichkey.bindings": [
     {
@@ -615,16 +616,12 @@
   "explorer.openEditors.visible": 0,
   "editor.letterSpacing": -0.3,
   "editor.lineHeight": 22,
-  // "editor.mouseWheelZoom": true,
   "gitlens.currentLine.enabled": true,
-  // "gitlens.hovers.currentLine.over": "line",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.list.automaticKeyboardNavigation": false,
   "oneDarkPro.editorTheme": "One Dark Pro",
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
-  "kite.showWelcomeNotificationOnStartup": false,
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace",
   "files.exclude": {
@@ -639,10 +636,11 @@
     "**/.nyc_output": true,
     "**/.ym_history": true,
     "**/.cache": true,
-    // "**/.next": true,
+    "**/.next": true,
     "**/GoogleDrive/**": true,
     "**/Dropbox/**": true,
-    "**/Pictures/**": true
+    "**/Pictures/**": true,
+    "**/target": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -653,11 +651,12 @@
     "**/.cache-loader": true,
     "**/.nyc_output": true,
     "**/.ym_history": true,
-    // "**/.next": true,
+    "**/.next": true,
     "**/.cache": true,
     "**/GoogleDrive/**": true,
     "**/Dropbox/**": true,
-    "**/Pictures/**": true
+    "**/Pictures/**": true,
+    "**/target": true
   },
   "cSpell.words": [
     "clsx",
@@ -784,12 +783,176 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.minimap.enabled": false,
   "editor.unicodeHighlight.invisibleCharacters": false,
-  "rust-analyzer.checkOnSave.command": "clippy",
   "workbench.editorAssociations": {
-    "*.wasm": "default"
+    "*.wasm": "default",
+    "*.pptx": "default",
+    "*.pdf": "default"
   },
-  "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  "editor.accessibilitySupport": "off",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "go.toolsManagement.autoUpdate": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "yaml": true,
+    "rust": false
   },
-  "tabnine.experimentalAutoImports": true
+  "diffEditor.ignoreTrimWhitespace": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.editor.enablePreview": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "errorLens.excludeBySource": [
+    "eslint(rulesdir/consistent-column)",
+    "ts(6133)"
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.indexing": true,
+  "python.analysis.autoImportCompletions": true,
+  "isort.args": ["--profile", "black"],
+  "explorer.confirmDelete": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.iconTheme": "vscode-icons",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "diffEditor.maxComputationTime": 0,
+  "git.autofetch": true,
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "files.associations": {
+    "*.php": "php",
+    "*.module": "php"
+  },
+  "intelephense.stubs": [
+    "apache",
+    "redis",
+    "bcmath",
+    "bz2",
+    "calendar",
+    "com_dotnet",
+    "Core",
+    "ctype",
+    "curl",
+    "date",
+    "dba",
+    "dom",
+    "enchant",
+    "exif",
+    "fileinfo",
+    "filter",
+    "fpm",
+    "ftp",
+    "gd",
+    "hash",
+    "iconv",
+    "imap",
+    "interbase",
+    "intl",
+    "json",
+    "ldap",
+    "libxml",
+    "mbstring",
+    "mcrypt",
+    "meta",
+    "mssql",
+    "mysqli",
+    "oci8",
+    "odbc",
+    "openssl",
+    "pcntl",
+    "pcre",
+    "PDO",
+    "pdo_ibm",
+    "pdo_mysql",
+    "pdo_pgsql",
+    "pdo_sqlite",
+    "pgsql",
+    "Phar",
+    "posix",
+    "pspell",
+    "readline",
+    "recode",
+    "Reflection",
+    "regex",
+    "session",
+    "shmop",
+    "SimpleXML",
+    "snmp",
+    "soap",
+    "sockets",
+    "sodium",
+    "SPL",
+    "sqlite3",
+    "standard",
+    "superglobals",
+    "sybase",
+    "sysvmsg",
+    "sysvsem",
+    "sysvshm",
+    "tidy",
+    "tokenizer",
+    "wddx",
+    "xml",
+    "xmlreader",
+    "xmlrpc",
+    "xmlwriter",
+    "Zend OPcache",
+    "zip",
+    "zlib"
+  ],
+  "intelephense.telemetry.enabled": false,
+  "intelephense.format.enable": true,
+  "intelephense.completion.triggerParameterHints": true,
+  "intelephense.completion.insertUseDeclaration": true,
+  "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
+  "intelephense.trace.server": "messages",
+  "intelephense.files.exclude": [
+    "**/.git/**",
+    "**/.svn/**",
+    "**/.hg/**",
+    "**/CVS/**",
+    "**/.DS_Store/**",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/storage",
+    "**/storage/**",
+    "**/tests/**",
+    "**/resources/views/**",
+    "**/database/migrations/**",
+    "**/storage/framework/views/**",
+    "_ide_helper.php",
+    "_ide_helper_models"
+  ],
+  "editor.fontLigatures": false,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "git.showPushSuccessNotification": true,
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "window.zoomLevel": 1,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "errorLens.messageEnabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": true,
+    "windsurf": true,
+    "cursor-global": true,
+    "cursor-workspace": true
+  }
 }
